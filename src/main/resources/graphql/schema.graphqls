@@ -1,4 +1,4 @@
-
+scalar LocalDateTime
 
 type Query {
     games(page: Int, genre: String, platform: String, studio: String): Games
@@ -13,7 +13,7 @@ type Game {
     id: ID
     name: String!
     genres: [String!]!
-    publicationDate: String
+    publicationDate: LocalDateTime
     editors: [Editor!]!
     studios: [Studio!]!
     platforms: [String!]!
