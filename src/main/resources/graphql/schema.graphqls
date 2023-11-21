@@ -9,6 +9,13 @@ type Query {
     studio(id: ID!): Studio
 }
 
+type Mutation {
+    deleteGame(id: ID!): Boolean
+    deleteEditor(id: ID!): Boolean
+    deleteStudio(id: ID!): Boolean
+}
+
+
 type Game {
     id: ID
     name: String!

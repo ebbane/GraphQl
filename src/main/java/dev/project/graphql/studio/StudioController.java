@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -27,5 +28,10 @@ public class StudioController {
   public Studios studios(@Argument Integer page) {
     Pageable pageable = PageRequest.of(Objects.requireNonNullElse(page, 0), 20);
     return studioService.getStudios(pageable);
+  }
+
+  @MutationMapping
+  public Boolean deleteStudio(@Argument Long id) {
+    return studioService.deleteStudioById(id);
   }
 }

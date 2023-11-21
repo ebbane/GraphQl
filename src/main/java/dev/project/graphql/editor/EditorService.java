@@ -28,4 +28,13 @@ public class EditorService {
     Page<EditorEntity> editors = editorRepository.findAll(pageable);
     return editorMapper.mapPageToEditors(editors);
   }
+
+  public Boolean deleteEditorById(Long id) {
+    try {
+      editorRepository.deleteById(id);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
 }

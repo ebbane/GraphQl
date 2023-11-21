@@ -29,4 +29,13 @@ public class StudioService {
     return studioMapper.mapPageToStudios(studios);
   }
 
+  public Boolean deleteStudioById(Long id) {
+    try {
+      studioRepository.deleteById(id);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
 }

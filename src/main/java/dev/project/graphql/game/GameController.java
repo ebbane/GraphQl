@@ -7,6 +7,7 @@ import java.util.Objects;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -32,5 +33,10 @@ public class GameController {
     return gameService.getGameById(id);
   }
 
+
+  @MutationMapping
+  public Boolean deleteGame(@Argument Long id) {
+    return gameService.deleteGameById(id);
+  }
 
 }

@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -28,4 +29,9 @@ public class EditorController {
     Pageable pageable = PageRequest.of(Objects.requireNonNullElse(page, 0), 20);
     return editorService.getEditors(pageable);
   }
+  @MutationMapping
+  public Boolean deleteEditor(@Argument Long id) {
+    return editorService.deleteEditorById(id);
+  }
+
 }

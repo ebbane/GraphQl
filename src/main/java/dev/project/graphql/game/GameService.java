@@ -29,5 +29,13 @@ public class GameService {
     return gameMapper.mapPageToGames(games);
   }
 
+  public Boolean deleteGameById(Long id) {
+    try {
+      gameRepository.deleteById(id);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
 
 }
