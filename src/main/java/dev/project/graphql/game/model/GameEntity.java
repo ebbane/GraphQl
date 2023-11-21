@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,7 @@ public class GameEntity {
   private String name;
 
   @Column(name = "publication_date")
-  private String publicationDate;
+  private LocalDateTime publicationDate;
 
   @ManyToMany
   @JoinTable(
@@ -80,11 +81,11 @@ public class GameEntity {
     this.genres = genres;
   }
 
-  public String getPublicationDate() {
+  public LocalDateTime getPublicationDate() {
     return publicationDate;
   }
 
-  public void setPublicationDate(String publicationDate) {
+  public void setPublicationDate(LocalDateTime publicationDate) {
     this.publicationDate = publicationDate;
   }
 

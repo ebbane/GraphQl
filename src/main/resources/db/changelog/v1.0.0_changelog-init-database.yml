@@ -19,7 +19,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: publication_date
-                  type: TEXT
+                  type: TIMESTAMP
         - createTable:
             tableName: editor
             columns:
