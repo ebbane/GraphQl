@@ -1,7 +1,9 @@
 package dev.project.graphql.editor;
 
 import dev.project.graphql.editor.model.Editor;
+import dev.project.graphql.editor.model.EditorEntity;
 import dev.project.graphql.editor.model.Editors;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ public class EditorService {
   }
 
   public Editors getEditors(Pageable pageable) {
-    var editors = editorRepository.findAll(pageable);
+    Page<EditorEntity> editors = editorRepository.findAll(pageable);
     return editorMapper.mapPageToEditors(editors);
   }
 }

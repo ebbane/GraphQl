@@ -1,10 +1,8 @@
-package dev.project.graphql.game.model;
+package dev.project.graphql.common;
 
-import dev.project.graphql.common.EditorLight;
-import dev.project.graphql.common.StudioLight;
 import java.util.List;
 
-public record Game(
+public record GameLight(
     Long id,
     String name,
     List<String> genres,
@@ -12,6 +10,7 @@ public record Game(
     List<EditorLight> editors,
     List<StudioLight> studios,
     List<String> platforms
+
 ) {
 
 }

@@ -2,6 +2,9 @@ package dev.project.graphql.game;
 
 import dev.project.graphql.game.model.GameEntity;
 import dev.project.graphql.game.model.SearchGame;
+import dev.project.graphql.studio.model.StudioEntity;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +27,9 @@ public class GameSpecifications {
       }
 
       if (StringUtils.isNotBlank(searchRequest.studio())) {
-        predicates.add(criteriaBuilder.isMember(searchRequest.studio(),
-            root.get("studios").get("name")));
+        Join<GameEntity, StudioEntity> studioEntityJoin = root.join("studios", JoinType.INNER);
+        predicates.add(criteriaBuilder.equal(studioEntityJoin.get("name"), searchRequest.studio()));
       }
-
       return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     };
   }

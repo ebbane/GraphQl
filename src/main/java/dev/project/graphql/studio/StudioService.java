@@ -1,6 +1,10 @@
 package dev.project.graphql.studio;
 
 import dev.project.graphql.studio.model.Studio;
+import dev.project.graphql.studio.model.StudioEntity;
+import dev.project.graphql.studio.model.Studios;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +22,11 @@ public class StudioService {
     return studioRepository.findById(id)
         .map(studioMapper::entityToStudio)
         .orElse(null);
+  }
+
+  public Studios getStudios(Pageable pageable) {
+    Page<StudioEntity> studios = studioRepository.findAll(pageable);
+    return studioMapper.mapPageToStudios(studios);
   }
 
 }
