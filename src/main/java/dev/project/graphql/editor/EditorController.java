@@ -29,9 +29,15 @@ public class EditorController {
     Pageable pageable = PageRequest.of(Objects.requireNonNullElse(page, 0), 20);
     return editorService.getEditors(pageable);
   }
+
   @MutationMapping
   public Boolean deleteEditor(@Argument Long id) {
     return editorService.deleteEditorById(id);
+  }
+
+  @MutationMapping
+  public Long createEditor(@Argument String name) {
+    return editorService.createEditor(name);
   }
 
 }

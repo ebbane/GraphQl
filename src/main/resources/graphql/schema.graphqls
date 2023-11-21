@@ -13,6 +13,9 @@ type Mutation {
     deleteGame(id: ID!): Boolean
     deleteEditor(id: ID!): Boolean
     deleteStudio(id: ID!): Boolean
+    createStudio(name: String!): ID
+    createEditor(name: String!): ID
+    createGame(name: String!, genres: [String!]!, publicationDate: LocalDateTime, editors: [ID!]!, studios: [ID!]!, platforms: [String!]!): ID
 }
 
 

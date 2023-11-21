@@ -3,6 +3,8 @@ package dev.project.graphql.studio;
 import dev.project.graphql.studio.model.Studio;
 import dev.project.graphql.studio.model.StudioEntity;
 import dev.project.graphql.studio.model.Studios;
+import java.util.List;
+import java.util.stream.StreamSupport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,18 @@ public class StudioService {
     } catch (Exception e) {
       return false;
     }
+  }
+
+  public Long createStudio(String name) {
+    var studioToSave = new StudioEntity();
+    studioToSave.setName(name);
+    return studioRepository.save(studioToSave).getId();
+  }
+
+  public List<StudioEntity> findAllStudiosByIds(List<Long> studioIds) {
+    var studioEntities = studioRepository.findAllById(studioIds);
+    return StreamSupport.stream(studioEntities.spliterator(), false)
+        .toList();
   }
 
 }

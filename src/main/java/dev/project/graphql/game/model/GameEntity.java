@@ -56,6 +56,17 @@ public class GameEntity {
   @Column(name = "platform")
   private List<String> platforms;
 
+  public GameEntity(String name, LocalDateTime publicationDate, List<String> genres,
+      List<String> platforms) {
+    this.name = name;
+    this.publicationDate = publicationDate;
+    this.genres = genres;
+    this.platforms = platforms;
+  }
+
+  public GameEntity() {
+
+  }
 
   public Long getId() {
     return id;

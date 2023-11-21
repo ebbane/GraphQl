@@ -34,4 +34,9 @@ public class StudioController {
   public Boolean deleteStudio(@Argument Long id) {
     return studioService.deleteStudioById(id);
   }
+
+  @MutationMapping
+  public Long createStudio(@Argument String name) {
+    return studioService.createStudio(name);
+  }
 }

@@ -45,7 +45,8 @@ public class LocalDateTimeScalar {
     if (dataFetcherResult instanceof LocalDateTime) {
       return ((LocalDateTime) dataFetcherResult).format(DateTimeFormatter.ofPattern(DATE_PATTERN));
     } else {
-      throw new CoercingSerializeException("Unable to serialize " + dataFetcherResult + " as LocalDateTime");
+      throw new CoercingSerializeException(
+          "Unable to serialize " + dataFetcherResult + " as LocalDateTime");
     }
   }
 
@@ -53,17 +54,20 @@ public class LocalDateTimeScalar {
     if (input instanceof String) {
       String possibleDateTimeValue = input.toString();
       if (looksLikeLocalDateTime(possibleDateTimeValue)) {
-        return LocalDateTime.parse(possibleDateTimeValue, DateTimeFormatter.ofPattern(DATE_PATTERN));
+        return LocalDateTime.parse(possibleDateTimeValue,
+            DateTimeFormatter.ofPattern(DATE_PATTERN));
       }
     }
-    throw new CoercingParseValueException("Unable to parse variable value " + input + " as LocalDateTime");
+    throw new CoercingParseValueException(
+        "Unable to parse variable value " + input + " as LocalDateTime");
   }
 
   private static LocalDateTime parseLocalDateTimeFromAstLiteral(Object input) {
     if (input instanceof StringValue) {
       String possibleDateTimeValue = ((StringValue) input).getValue();
       if (looksLikeLocalDateTime(possibleDateTimeValue)) {
-        return LocalDateTime.parse(possibleDateTimeValue, DateTimeFormatter.ofPattern(DATE_PATTERN));
+        return LocalDateTime.parse(possibleDateTimeValue,
+            DateTimeFormatter.ofPattern(DATE_PATTERN));
       }
     }
     throw new CoercingParseLiteralException(

@@ -3,6 +3,8 @@ package dev.project.graphql.editor;
 import dev.project.graphql.editor.model.Editor;
 import dev.project.graphql.editor.model.EditorEntity;
 import dev.project.graphql.editor.model.Editors;
+import java.util.List;
+import java.util.stream.StreamSupport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,4 +39,17 @@ public class EditorService {
       return false;
     }
   }
+
+  public Long createEditor(String name) {
+    var editorToSave = new EditorEntity();
+    editorToSave.setName(name);
+    return editorRepository.save(editorToSave).getId();
+  }
+
+  public List<EditorEntity> findAllEditorsByIds(List<Long> editorIds) {
+    var editorEntities = editorRepository.findAllById(editorIds);
+    return StreamSupport.stream(editorEntities.spliterator(), false)
+        .toList();
+  }
+
 }
