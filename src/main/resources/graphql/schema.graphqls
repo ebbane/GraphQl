@@ -1,0 +1,64 @@
+scalar LocalDateTime
+
+type Query {
+    games(page: Int, genre: String, platform: String, studio: String): Games
+    game(id: ID!): Game
+    editors(page: Int): Editors
+    editor(id: ID!): Editor
+    studios(page: Int): Studios
+    studio(id: ID!): Studio
+}
+
+type Mutation {
+    deleteGame(id: ID!): Boolean
+    deleteEditor(id: ID!): Boolean
+    deleteStudio(id: ID!): Boolean
+    createStudio(name: String!): ID
+    createEditor(name: String!): ID
+    createGame(name: String!, genres: [String!]!, publicationDate: LocalDateTime, editors: [ID!]!, studios: [ID!]!, platforms: [String!]!): ID
+}
+
+
+type Game {
+    id: ID
+    name: String!
+    genres: [String!]!
+    publicationDate: LocalDateTime
+    editors: [Editor!]!
+    studios: [Studio!]!
+    platforms: [String!]!
+}
+
+type Editor {
+    id: ID
+    name: String!
+    games: [Game]
+}
+
+type Studio {
+    id: ID
+    name: String!
+    games: [Game]
+}
+
+type Infos {
+    count: Int!
+    pages: Int!
+    nextPage: Int
+    previousPage: Int
+}
+
+type Games {
+    infos: Infos
+    results: [Game]
+}
+
+type Editors {
+    infos: Infos
+    results: [Editor]
+}
+
+type Studios {
+    infos: Infos
+    results: [Studio]
+}

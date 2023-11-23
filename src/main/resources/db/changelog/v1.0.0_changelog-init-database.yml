@@ -1,0 +1,160 @@
+databaseChangeLog:
+  - changeSet:
+      id: feat-create-table-game-editor-studio
+      author: ediet
+      changes:
+        - createTable:
+            tableName: game
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: publication_date
+                  type: TIMESTAMP
+        - createTable:
+            tableName: editor
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: studio
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: game_editor
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: game_id
+                  type: BIGINT
+                  constraints:
+                    notNull: true
+              - column:
+                  name: editor_id
+                  type: BIGINT
+                  constraints:
+                    notNull: true
+        - addForeignKeyConstraint:
+            baseTableName: game_editor
+            baseColumnNames: game_id
+            referencedTableName: game
+            referencedColumnNames: id
+            constraintName: fk_game_editor_game_id
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: game_editor
+            baseColumnNames: editor_id
+            referencedTableName: editor
+            referencedColumnNames: id
+            constraintName: fk_game_editor_editor_id
+            onDelete: CASCADE
+        - createTable:
+            tableName: game_studio
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: game_id
+                  type: BIGINT
+                  constraints:
+                    notNull: true
+              - column:
+                  name: studio_id
+                  type: BIGINT
+                  constraints:
+                    notNull: true
+        - addForeignKeyConstraint:
+            baseTableName: game_studio
+            baseColumnNames: game_id
+            referencedTableName: game
+            referencedColumnNames: id
+            constraintName: fk_game_studio_game_id
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: game_studio
+            baseColumnNames: studio_id
+            referencedTableName: studio
+            referencedColumnNames: id
+            constraintName: fk_game_studio_studio_id
+            onDelete: CASCADE
+        - createTable:
+            tableName: game_genre
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: game_id
+                  type: BIGINT
+              - column:
+                  name: genre
+                  type: TEXT
+        - addForeignKeyConstraint:
+            baseTableName: game_genre
+            baseColumnNames: game_id
+            referencedTableName: game
+            referencedColumnNames: id
+            constraintName: fk_game_genre_game_id
+            onDelete: CASCADE
+        - createTable:
+            tableName: game_platform
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: game_id
+                  type: BIGINT
+              - column:
+                  name: platform
+                  type: TEXT
+        - addForeignKeyConstraint:
+            baseTableName: game_platform
+            baseColumnNames: game_id
+            referencedTableName: game
+            referencedColumnNames: id
+            constraintName: fk_game_platform_game_id
+            onDelete: CASCADE

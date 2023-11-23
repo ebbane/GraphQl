@@ -1,4 +1,4 @@
-package dev.project.webservice.graphql;
+package dev.project.graphql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
