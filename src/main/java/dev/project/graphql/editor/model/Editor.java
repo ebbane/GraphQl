@@ -4,7 +4,7 @@ import dev.project.graphql.common.GameLight;
 import java.util.List;
 
 public record Editor(
-    String id,
+    Long id,
     String name,
     List<GameLight> games
 ) {

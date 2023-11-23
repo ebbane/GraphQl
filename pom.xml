@@ -66,6 +66,13 @@
 			<artifactId>spring-graphql-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<artifactId>instancio-junit</artifactId>
+			<groupId>org.instancio</groupId>
+			<scope>test</scope>
+			<version>3.6.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

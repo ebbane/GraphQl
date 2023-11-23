@@ -45,7 +45,7 @@ jeux vidéo
 
 ### Construit avec
 
-Ce projet est construit avec les logiciels, et applications suivantes :
+Ce projet est construit avec les logiciels, framework, et applications suivantes :
 
 * [Docker](https://www.docker.com/)
 * [Java](https://www.java.com/fr/)
@@ -54,6 +54,8 @@ Ce projet est construit avec les logiciels, et applications suivantes :
 * [Github](https://github.com/)
 * [IntelliJ IDEA](https://www.jetbrains.com/fr-fr/idea/)
 * [GraphQL](https://graphql.org/)
+* [Mockito](https://site.mockito.org/)
+* [Instancio](https://www.instancio.org/)
 
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 

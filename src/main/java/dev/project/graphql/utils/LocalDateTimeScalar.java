@@ -1,4 +1,4 @@
-package dev.project.graphql.common;
+package dev.project.graphql.utils;
 
 import graphql.language.StringValue;
 import graphql.schema.Coercing;

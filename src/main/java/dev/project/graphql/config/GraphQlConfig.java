@@ -1,6 +1,6 @@
 package dev.project.graphql.config;
 
-import dev.project.graphql.common.LocalDateTimeScalar;
+import dev.project.graphql.utils.LocalDateTimeScalar;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.graphql.execution.RuntimeWiringConfigurer;
